@@ -25,10 +25,14 @@ public class JobVacancy {
         for(int i=0; i<amountJobSeekers;i++){
             if(jobSeekers[i].login(username,password)){
                 jobSeekersId=i;
+                System.out.println();
+                System.out.println("Login berhasil");
                 return jobSeekers[i];
             }
         }
         jobSeekersId=0;
+        System.out.println();
+        System.out.println("Login gagal");
         return jobSeekers[0];
     }
     public JobSeekers getjobSeekers(int indeks){

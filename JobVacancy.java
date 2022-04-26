@@ -12,6 +12,8 @@ public class JobVacancy {
     public void addJobSeekers(String username, String password){
         int i = amountJobSeekers++;
         jobSeekers[i] = new JobSeekers (username, password);
+        
+        System.out.println("Registrasi berhasil");
     }
     
     public int getAmountJobSeekers(){

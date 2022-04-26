@@ -3,23 +3,23 @@ package lowongan;
 import java.util.Scanner;
 
 public class Main {
-    
-    public static void main(String[] args){
+
+    public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-        
+
         JobVacancy jobVacancy = new JobVacancy();
-        jobVacancy.addJobSeekers("null","null");
-        JobSeekers user = jobVacancy.loginJobSeekers("null","null");
-        
-        int menu=0;
-        while(menu!=3){
-            while(jobVacancy.getJobSeekersId()!=0){
+        jobVacancy.addJobSeekers("null", "null");
+        JobSeekers user = jobVacancy.loginJobSeekers("null", "null");
+
+        int menu = 0;
+        while (menu != 3) {
+            while (jobVacancy.getJobSeekersId() != 0) {
                 System.out.println("\nChoice your option:");
                 System.out.println("1. Job Vacancy");
                 System.out.println("2. Logout");
                 System.out.println("\nYour Choice:");
                 int pilih = scan.nextInt();
-                switch(pilih){
+                switch (pilih) {
                     case 1:
                         showListJob();
                         break;
@@ -28,33 +28,32 @@ public class Main {
                         break;
                 }
             }
+            
             System.out.println("\nJOB VACANCY");
             System.out.println("1. Registrasi");
             System.out.println("2. Login");
             System.out.println("3. Finish");
+            
             System.out.print("Your Choice: ");
             menu = scan.nextInt();
-            switch(menu){
-                case 1:
-                    System.out.print("username:   ");
-                    scan.nextLine();
-                    String usernameRegister = scan.nextLine();
-                    System.out.print("password:   ");
-                    String passwordRegister = scan.nextLine();
-                    jobVacancy.addJobSeekers(usernameRegister,passwordRegister);
+            
+            System.out.print("username:   ");
+            scan.nextLine();
+            String username = scan.nextLine();
+            System.out.print("password:   ");
+            String password = scan.nextLine();
+            
+            switch (menu) {
+                case 1: //registrasi
+                    jobVacancy.addJobSeekers(username, password);
                     break;
-                case 2:
-                    System.out.print("username: ");
-                    scan.nextLine();
-                    String usernameLogin = scan.nextLine();
-                    System.out.print("password: ");
-                    String passwordLogin = scan.nextLine();
-                    user = jobVacancy.loginJobSeekers(usernameLogin,passwordLogin);
+                case 2: //Login
+                    user = jobVacancy.loginJobSeekers(username, password);
                     break;
-            }       
+            }
         }
     }
-            
+
     private static void showListJob() {
         System.out.println("\n-- JOB VACANCY --");
         for (int i = 0; i < DetailJob.addListJob().length; i++) {
@@ -68,5 +67,5 @@ public class Main {
             System.out.println("");
         }
     }
-        
+
 }
